@@ -51,8 +51,6 @@ function ui.HookPanel(panelChildren, panelProps, panelState)
 	local viewList = panelChildren.viewList
 	local viewRefresh = panelChildren.viewRefresh
 
-	print("rebuilt ui")
-
 	local function refreshList()
 		local sets = ViewSet.System.getSets()
 		viewList.list:Clear()

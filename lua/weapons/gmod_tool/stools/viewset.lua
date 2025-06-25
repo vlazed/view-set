@@ -61,6 +61,8 @@ TOOL:BuildConVarList()
 ---@module "viewset.client.ui"
 local ui = include("viewset/client/ui.lua")
 
+local panelState = {}
+
 ---@param cPanel ControlPanel|DForm
 function TOOL.BuildCPanel(cPanel)
 	---@type PanelProps

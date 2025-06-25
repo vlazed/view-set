@@ -65,7 +65,6 @@ function system.viewChanged()
 	for _, entity in ipairs(entities.array) do
 		table.insert(entityList, { entity:EntIndex(), entity.viewName })
 	end
-	print("Updating")
 	net.Start("viewset_sendsnapshot")
 	net.WriteUInt(#setData, 16)
 	net.WriteData(setData)
@@ -104,7 +103,7 @@ end)
 ---@param entity ViewEntity
 ---@param name string?
 function system.setName(entity, name)
-	setViewName(_, entity, { viewName = name })
+	setViewName(nil, entity, { viewName = name })
 end
 
 function system.getSets()
