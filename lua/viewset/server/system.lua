@@ -71,6 +71,20 @@ function system.viewChanged()
 	net.Broadcast()
 end
 
+util.AddNetworkString("viewset_setviewname")
+---@param ply Player
+local function setViewNameNet(_, ply)
+	local name = net.ReadString()
+	local count = net.ReadUInt(13)
+	local data = {viewName = name}
+	for i = 1, count do
+		local entity = net.ReadEntity()
+		---@cast entity ViewEntity 
+		setViewName(ply, entity, data)
+	end
+end
+net.Receive("viewset_setviewname", setViewNameNet)
+
 local drawFilter = {
 	-- TODO: Add entities that should remain invisible
 	-- and put this in a separate file if necessary
