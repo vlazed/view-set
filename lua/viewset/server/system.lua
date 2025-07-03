@@ -101,6 +101,11 @@ local function setDraw(entity, visible)
 	for _, child in ipairs(entity:GetChildren()) do
 		setDraw(child, visible)
 	end
+	---@diagnostic disable: undefined-field
+	if entity:GetClass() == "prop_effect" and IsValid(entity.AttachedEntity) then
+		setDraw(entity.AttachedEntity, visible)
+	end
+	---@diagnostic enable
 end
 
 util.AddNetworkString("viewset_setvisibility")

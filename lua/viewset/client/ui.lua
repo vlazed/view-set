@@ -34,14 +34,13 @@ function ui.ConstructPanel(cPanel, panelProps, panelState)
 		ViewSet.EntityList:Remove()
 	end
 
-	print("Reconstruct")
 	local frame = vgui.Create("DFrame")
 	local list = vgui.Create("DListView", frame)
 	frame:SetPos(WIDTH * 0.1, HEIGHT * 0.25)
 	frame:SetSize(WIDTH * 0.125, HEIGHT * 0.5)
-	frame:SizeTo(cPanel:GetWide(), cPanel:GetTall(), 0)
+	frame:SetSizable(true)
 	frame:SetTitle("Entity List")
-	-- frame:ShowCloseButton(false)
+	frame:ShowCloseButton(false)
 	list:Dock(FILL)
 	list:SetMultiSelect(true)
 	list:AddColumn("Index")
@@ -54,7 +53,6 @@ function ui.ConstructPanel(cPanel, panelProps, panelState)
 	ViewSet.EntityList = frame
 	ViewSet.EntityList.list = list
 	ViewSet.EntityList.refresh = refresh
-	print(ViewSet.EntityList)
 
 	function viewList:PerformLayout()
 		self.list:Dock(FILL)
